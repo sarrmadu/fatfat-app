@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: logiroute-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: logiroute
+      POSTGRES_PASSWORD: logiroute
+      POSTGRES_DB: logiroute
+    ports:
+      - "5432:5432"
+    volumes:
+      - logiroute_pgdata:/var/lib/postgresql/data
+
+volumes:
+  logiroute_pgdata:
