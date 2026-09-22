@@ -1,8 +1,23 @@
 import "./globals.css";
+import RegisterSW from "../components/RegisterSW";
 
 export const metadata = {
   title: "FatFat-App",
   description: "Optimisation de tournées de livraison — Dakar, Thiès, Mbour",
+  manifest: "/manifest.json",
+  themeColor: "#123C50",
+  icons: {
+    icon: [
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "FatFat-App",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -15,7 +30,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <RegisterSW />
+        {children}
+      </body>
     </html>
   );
 }
