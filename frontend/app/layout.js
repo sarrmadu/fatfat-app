@@ -5,7 +5,6 @@ export const metadata = {
   title: "FatFat-App",
   description: "Optimisation de tournées de livraison — Dakar, Thiès, Mbour",
   manifest: "/manifest.json",
-  themeColor: "#123C50",
   icons: {
     icon: [
       { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -18,6 +17,10 @@ export const metadata = {
     statusBarStyle: "black-translucent",
     title: "FatFat-App",
   },
+};
+
+export const viewport = {
+  themeColor: "#123C50",
 };
 
 export default function RootLayout({ children }) {
