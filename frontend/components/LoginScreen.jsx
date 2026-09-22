@@ -56,7 +56,7 @@ export default function LoginScreen({ apiBaseUrl, onLogin }) {
   return (
     <div className="login-wrap">
       <div className="login-head">
-        <div className="mark">FatFat-App</div>
+        <div className="mark">FatFat</div>
         <p>Connectez-vous à votre compte.</p>
       </div>
 

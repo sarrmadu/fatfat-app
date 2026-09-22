@@ -2,7 +2,7 @@ import "./globals.css";
 import RegisterSW from "../components/RegisterSW";
 
 export const metadata = {
-  title: "FatFat-App",
+  title: "FatFat",
   description: "Optimisation de tournées de livraison — Dakar, Thiès, Mbour",
   manifest: "/manifest.json",
   icons: {
@@ -15,7 +15,7 @@ export const metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "FatFat-App",
+    title: "FatFat",
   },
 };
 
