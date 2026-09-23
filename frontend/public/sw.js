@@ -1,5 +1,5 @@
-const CACHE_NAME = "fatfat-app-cache-v1";
-const PRECACHE_URLS = ["/", "/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE_NAME = "fatfat-app-cache-v2";
+const PRECACHE_URLS = ["/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -20,7 +20,6 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  // Ne jamais mettre en cache les appels API (données toujours fraîches)
   const estAppelApi =
     url.pathname.startsWith("/api") ||
     url.hostname.includes("onrender.com");
@@ -30,7 +29,15 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Pour le reste (pages, assets statiques) : cache d'abord, réseau en secours
+  // Pages HTML (navigation) : toujours le réseau en premier, jamais de version périmée
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Assets statiques (icônes, styles, scripts) : cache d'abord, réseau en secours
   event.respondWith(
     caches.match(event.request).then((cached) => {
       return (
