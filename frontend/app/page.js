@@ -107,7 +107,7 @@ export default function Home() {
     <div className="app">
       <div className="topbar">
         <div className="brand">
-          <span className="mark">FatFat-App</span>
+          <span className="mark">FatFat</span>
           <span className="sub">Sénégal</span>
         </div>
         {session && (isAdmin || entrepriseInfo) && (
